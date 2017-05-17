@@ -2,5 +2,6 @@
     <string name="app_name">Task Manager</string>
 
     <string name="button_view_tasks">View Task</string>
+    <string name="task_name">Task Name</string>
 
 </resources>

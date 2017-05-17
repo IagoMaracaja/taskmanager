@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
 
@@ -13,20 +14,62 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:text="@string/new_task"
                 android:textColor="@color/light_gray"
-                android:text="@string/task_name"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            >
 
+            <EditText
+                android:id="@+id/edit_text"
+                android:layout_width="match_parent"
+                android:hint="@string/task_name"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionGo"
+                android:inputType="text"
+                android:textColorHighlight="@color/gray"
+                />
 
+        </android.support.design.widget.TextInputLayout>
+
+        <include layout="@layout/priority_layout"></include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="50dp"
+                android:text="CANCEL"
+                android:layout_margin="5dp"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="5dp"
+                android:layout_height="50dp"
+                android:text="OK"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

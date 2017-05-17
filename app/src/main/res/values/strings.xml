@@ -3,5 +3,10 @@
 
     <string name="button_view_tasks">View Task</string>
     <string name="task_name">Task Name</string>
+    <string name="new_task">New Task</string>
+    <string name="priority_high">High</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_low">Low</string>
+    <string name="priority">Priority</string>
 
 </resources>

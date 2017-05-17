@@ -1,6 +1,8 @@
 package com.mobile.pos.iago.taskmanager.views;
 
 import android.app.Activity;
+import android.app.IntentService;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +12,13 @@ import com.mobile.pos.iago.taskmanager.adapters.TaskAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends Activity {
 
     @BindView(R.id.rv_list_of_task)
     protected RecyclerView mListOfTasks;
+
 
     String[] arrayOfTasks = {
             "Lavar o carro",
@@ -48,5 +52,11 @@ public class MainActivity extends Activity {
 
         TaskAdapter adapter = new TaskAdapter(this, arrayOfTasks);
         mListOfTasks.setAdapter(adapter);
+    }
+
+    @OnClick(R.id.btn_view_task)
+    protected  void onClick(){
+        Intent it = new Intent(MainActivity.this, CreateTaskActivity.class);
+        startActivity(it);
     }
 }

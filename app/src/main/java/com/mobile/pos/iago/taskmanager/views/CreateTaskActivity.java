@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.models.Task;
@@ -107,8 +108,16 @@ public class CreateTaskActivity extends AppCompatActivity {
         newTask.setPriority(this.mPriority);
         newTask.setName(taskName);
         MainActivity.mTasks.add(newTask);
+        Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
+        resetValues();
     }
 
+    private void resetValues(){
+        this.mEtTaskName.setText(" ");
+        this.mCheckBoxHigh.setChecked(false);
+        this.mCheckBoxMedium.setChecked(false);
+        this.mCheckBoxLow.setChecked(false);
+    }
 
 
 

@@ -11,5 +11,6 @@
 
     <!-- Error messages -->
     <string name="task_name_error">The name cannot be blank</string>
+    <string name="total_of_task">Total of task:</string>
 
 </resources>

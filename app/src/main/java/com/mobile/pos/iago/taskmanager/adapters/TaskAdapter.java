@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by iago on 17/05/17.
@@ -66,6 +67,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.gray));
             }
         }
+        holder.mTaskName.setText(position+".");
 
 
     }
@@ -81,6 +83,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         protected TextView mTaskName;
         @BindView(R.id.task_status)
         protected CheckBox mTaskStatus;
+        @BindView(R.id.task_number)
+        protected TextView mTaskNumber;
 
         public TaskViewHolder(View view) {
             super(view);

@@ -34,7 +34,7 @@
             >
 
             <EditText
-                android:id="@+id/edit_text"
+                android:id="@+id/et_task_name"
                 android:layout_width="match_parent"
                 android:hint="@string/task_name"
                 android:layout_height="wrap_content"
@@ -45,6 +45,15 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible"
+            android:textColor="@color/red"/>
+
         <include layout="@layout/priority_layout"></include>
 
         <LinearLayout
@@ -52,6 +61,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/btn_cancel_task"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_height="50dp"
@@ -61,6 +71,7 @@
                 android:background="@color/colorAccent"/>
 
             <Button
+                android:id="@+id/btn_create_task"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_margin="5dp"

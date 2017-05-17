@@ -9,6 +9,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.adapters.TaskAdapter;
+import com.mobile.pos.iago.taskmanager.models.Task;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,27 +24,20 @@ public class MainActivity extends Activity {
     protected RecyclerView mListOfTasks;
 
 
-    String[] arrayOfTasks = {
-            "Lavar o carro",
-            "Fazer feira",
-            "Dormir",
-            "Jogar Bola",
-            "Comprar toalhas",
-            "Jogar o lixo fora",
-            "Tomar chá",
-            "Beber 6 copos de água",
-            "Trocar luz do quarto",
-            "Fazer sopa"
-    };
+    public static List<Task> mTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mTasks = new ArrayList<>();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         configureRecyclerView();
-
-
     }
 
     private void configureRecyclerView(){
@@ -50,7 +47,7 @@ public class MainActivity extends Activity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListOfTasks.setLayoutManager(linearLayoutManager);
 
-        TaskAdapter adapter = new TaskAdapter(this, arrayOfTasks);
+        TaskAdapter adapter = new TaskAdapter(this, mTasks);
         mListOfTasks.setAdapter(adapter);
     }
 
@@ -59,4 +56,10 @@ public class MainActivity extends Activity {
         Intent it = new Intent(MainActivity.this, CreateTaskActivity.class);
         startActivity(it);
     }
+
+    @OnClick(R.id.btn_close)
+    protected  void onClose(){
+        MainActivity.this.finish();
+    }
+
 }

@@ -9,4 +9,7 @@
     <string name="priority_low">Low</string>
     <string name="priority">Priority</string>
 
+    <!-- Error messages -->
+    <string name="task_name_error">The name cannot be blank</string>
+
 </resources>

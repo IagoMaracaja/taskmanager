@@ -47,27 +47,33 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         Task taskName = this.mTaskList.get(position);
         holder.mTaskName.setText(taskName.getName());
-
+        holder.mTaskNumber.setText((position+1)+".");
         if (taskName.getPriority() == CreateTaskActivity.Priority.High) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.red));
+                holder.mTaskNumber.setTextColor(mContext.getColor(R.color.red));
             }else{
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.red));
+                holder.mTaskNumber.setTextColor(mContext.getResources().getColor(R.color.red));
             }
         } else if (taskName.getPriority() == CreateTaskActivity.Priority.Medium) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.yellow));
+                holder.mTaskNumber.setTextColor(mContext.getColor(R.color.yellow));
             }else{
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.yellow));
+                holder.mTaskNumber.setTextColor(mContext.getResources().getColor(R.color.yellow));
             }
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.gray));
+                holder.mTaskNumber.setTextColor(mContext.getColor(R.color.gray));
             }else{
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.gray));
+                holder.mTaskNumber.setTextColor(mContext.getResources().getColor(R.color.gray));
             }
         }
-        holder.mTaskName.setText(position+".");
+
 
 
     }
@@ -89,7 +95,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         public TaskViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-
         }
     }
 }

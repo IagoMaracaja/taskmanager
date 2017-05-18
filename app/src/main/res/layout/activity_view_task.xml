@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/white"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,15 +17,24 @@
             android:text="Create your task"
             android:textSize="23sp"/>
 
+        <Button
+            android:id="@+id/btn_create_new_task"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:textColor="@color/light_gray"
+            android:background="@color/transparent"
+            android:textSize="23sp"
+            android:text="+"/>
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_fragment_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <include layout="@layout/form_create_task"></include>
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     </LinearLayout>
+
 
 </LinearLayout>

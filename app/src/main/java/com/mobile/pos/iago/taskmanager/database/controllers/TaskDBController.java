@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.mobile.pos.iago.taskmanager.database.helper.SQLiteHelper;
 import com.mobile.pos.iago.taskmanager.database.tables.TableTask;
@@ -41,6 +42,7 @@ public class TaskDBController {
         values.put(TableTask.TASK_TITLE, task.getTaskTitle());
         values.put(TableTask.TASK_DESCRIPTION, task.getTaskDescription());
         values.put(TableTask.TASK_PRIORITY, task.getPriority().toString());
+        values.put(TableTask.TASK_STATUS, task.getTaskStatus()? "1" : "0");
 
         result = db.insert(TableTask.TABLE_NAME, null, values);
         db.close();
@@ -59,9 +61,9 @@ public class TaskDBController {
     public List<Task> getAllTask(){
         List<Task> tasks = new ArrayList<>();
         Cursor cursor;
-        String[] campos =  {TableTask.ID,TableTask.TASK_TITLE,TableTask.TASK_DESCRIPTION,TableTask.TASK_PRIORITY};
+        String[] fields =  {TableTask.ID,TableTask.TASK_TITLE,TableTask.TASK_DESCRIPTION,TableTask.TASK_PRIORITY, TableTask.TASK_STATUS};
         db = helper.getReadableDatabase();
-        cursor = db.query(TableTask.TABLE_NAME, campos, null, null, null, null, null, null);
+        cursor = db.query(TableTask.TABLE_NAME, fields, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
@@ -72,13 +74,15 @@ public class TaskDBController {
 
                 String priority = cursor.getString(cursor.getColumnIndex(TableTask.TASK_PRIORITY));
 
-                if (priority.equals(CreateTaskActivity.Priority.High)) {
+                if (priority.equals(CreateTaskActivity.Priority.High.toString())) {
                     task.setPriority(CreateTaskActivity.Priority.High);
-                } else if (priority.equals(CreateTaskActivity.Priority.Medium)) {
+                } else if (priority.equals(CreateTaskActivity.Priority.Medium.toString())) {
                     task.setPriority(CreateTaskActivity.Priority.Medium);
                 } else {
                     task.setPriority(CreateTaskActivity.Priority.Low);
                 }
+                String taskStatus = cursor.getString(cursor.getColumnIndex(TableTask.TASK_STATUS));
+                task.setTaskStatus( taskStatus == "1"? true: false);
 
                 tasks.add(task);
                 cursor.moveToNext();

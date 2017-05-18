@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.pos.iago.taskmanager.R;
+import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
 import com.mobile.pos.iago.taskmanager.models.Task;
 
 import butterknife.BindView;
@@ -38,6 +39,8 @@ public class CreateTaskActivity extends AppCompatActivity {
     protected TextView mErrorMessage;
     @BindView(R.id.et_task_name)
     protected EditText mEtTaskName;
+    @BindView(R.id.et_task_description)
+    protected EditText mEtTaskDescription;
     private Priority mPriority;
 
     @Override
@@ -84,7 +87,8 @@ public class CreateTaskActivity extends AppCompatActivity {
     public void createTaskButton(){
         if(this.checkTaskName()){
             this.mErrorMessage.setVisibility(View.INVISIBLE);
-            this.createTask(this.mEtTaskName.getText().toString());
+            this.createTask(this.mEtTaskName.getText().toString(),
+                    mEtTaskDescription.getText().toString());
         }else{
             this.mErrorMessage.setVisibility(View.VISIBLE);
             this.mErrorMessage.setText(getString(R.string.task_name_error));
@@ -103,17 +107,26 @@ public class CreateTaskActivity extends AppCompatActivity {
         return true;
     }
 
-    public void createTask(String taskName){
+    public void createTask(String taskName, String taskDescription){
         Task newTask = new Task();
         newTask.setPriority(this.mPriority);
         newTask.setTaskTitle(taskName);
-        MainActivity.mTasks.add(newTask);
-        Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
+        newTask.setTaskDescription(taskDescription);
+        newTask.setTaskStatus(false);
+
+        TaskDBController db = new TaskDBController(this);
+        boolean insertResult = db.addNewTask(newTask);
+
+        if (insertResult){
+            Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
+        }
+
         resetValues();
     }
 
     private void resetValues(){
         this.mEtTaskName.setText(" ");
+        this.mEtTaskDescription.setText(" ");
         this.mCheckBoxHigh.setChecked(false);
         this.mCheckBoxMedium.setChecked(false);
         this.mCheckBoxLow.setChecked(false);

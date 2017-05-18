@@ -9,15 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeTransparent">
-        <activity android:taskTitle=".views.MainActivity">
+        <activity android:name=".views.MainActivity">
             <intent-filter>
-                <action android:taskTitle="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:taskTitle="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:taskTitle=".views.CreateTaskActivity"
+        <activity android:name=".views.CreateTaskActivity"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity android:name=".views.SplashScreenActivity"
             android:theme="@style/AppTheme"></activity>
     </application>
 

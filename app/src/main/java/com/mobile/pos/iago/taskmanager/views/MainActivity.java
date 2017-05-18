@@ -2,6 +2,7 @@ package com.mobile.pos.iago.taskmanager.views;
 
 import android.app.Activity;
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.adapters.TaskAdapter;
+import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
 import com.mobile.pos.iago.taskmanager.models.Task;
 
 import java.util.ArrayList;
@@ -28,24 +30,21 @@ public class MainActivity extends Activity {
     protected TextView mTotalOfTasks;
 
     public static List<Task> mTasks;
+    private static TaskAdapter mTaskAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mTasks = new ArrayList<>();
-
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        String totalOfTask = getString(R.string.total_of_task);
-        mTotalOfTasks.setText(totalOfTask + " " + mTasks.size());
-
         configureRecyclerView();
+        updateValues(this);
     }
 
     private void configureRecyclerView(){
@@ -54,9 +53,9 @@ public class MainActivity extends Activity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListOfTasks.setLayoutManager(linearLayoutManager);
-
-        TaskAdapter adapter = new TaskAdapter(this, mTasks);
-        mListOfTasks.setAdapter(adapter);
+        mTasks = new TaskDBController(this).getAllTask();
+        mTaskAdapter = new TaskAdapter(this, mTasks);
+        mListOfTasks.setAdapter(mTaskAdapter);
     }
 
     @OnClick(R.id.btn_view_task)
@@ -68,6 +67,13 @@ public class MainActivity extends Activity {
     @OnClick(R.id.btn_close)
     protected  void onClose(){
         MainActivity.this.finish();
+    }
+
+    public static void updateValues(Context context){
+        String totalOfTask = context.getString(R.string.total_of_task);
+        //mTotalOfTasks.setText(totalOfTask + " " + mTasks.size());
+        mTasks = new TaskDBController(context).getAllTask();
+        mTaskAdapter.notifyDataSetChanged();
     }
 
 }

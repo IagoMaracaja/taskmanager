@@ -11,6 +11,7 @@ public class Task {
     private CreateTaskActivity.Priority priority;
     private String taskTitle;
     private String taskDescription;
+    private Boolean taskStatus;
 
     public Task(){}
 
@@ -44,5 +45,13 @@ public class Task {
 
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
+    }
+
+    public Boolean getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(Boolean taskStatus) {
+        this.taskStatus = taskStatus;
     }
 }

@@ -35,9 +35,6 @@ public class TaskListFragment extends Fragment {
     @BindView(R.id.rv_list_of_task)
     protected RecyclerView mListOfTasks;
 
-    @BindView(R.id.total_of_task)
-    protected TextView mTotalOfTasks;
-
     public static List<Task> mTasks;
     private static TaskAdapter mTaskAdapter;
 
@@ -68,20 +65,8 @@ public class TaskListFragment extends Fragment {
         mListOfTasks.setAdapter(mTaskAdapter);
     }
 
-    @OnClick(R.id.btn_view_task)
-    protected  void onClick(){
-        Intent it = new Intent(getActivity(), CreateTaskActivity.class);
-        startActivity(it);
-    }
-
-    @OnClick(R.id.btn_close)
-    protected  void onClose(){
-        getActivity().finish();
-    }
-
     public static void updateValues(Context context){
-        String totalOfTask = context.getString(R.string.total_of_task);
-        //mTotalOfTasks.setText(totalOfTask + " " + mTasks.size());
+
         mTasks = new TaskDBController(context).getAllTask();
         mTaskAdapter.notifyDataSetChanged();
     }

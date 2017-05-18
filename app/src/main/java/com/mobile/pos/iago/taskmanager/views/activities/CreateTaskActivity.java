@@ -51,7 +51,6 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     }
 
-
     @OnClick(R.id.check_high)
     public void onClickHighPriority() {
         checkPriority(Priority.High);
@@ -67,7 +66,10 @@ public class CreateTaskActivity extends AppCompatActivity {
         checkPriority(Priority.Low);
     }
 
-
+    /**
+     * Check priority action
+     * @param priority
+     */
     public void checkPriority(Priority priority) {
         if (priority == Priority.High) {
             this.mCheckBoxMedium.setChecked(false);
@@ -100,6 +102,10 @@ public class CreateTaskActivity extends AppCompatActivity {
         CreateTaskActivity.this.finish();
     }
 
+    /**
+     * Checf if task name has valid entries
+     * @return
+     */
     public boolean checkTaskName(){
         if(this.mEtTaskName.getText().toString().equals("")){
             return false;
@@ -107,6 +113,11 @@ public class CreateTaskActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Create task and save on db
+     * @param taskName
+     * @param taskDescription
+     */
     public void createTask(String taskName, String taskDescription){
         Task newTask = new Task();
         newTask.setPriority(this.mPriority);
@@ -124,6 +135,9 @@ public class CreateTaskActivity extends AppCompatActivity {
         resetValues();
     }
 
+    /**
+     * Clear form data
+     */
     private void resetValues(){
         this.mEtTaskName.setText(" ");
         this.mEtTaskDescription.setText(" ");

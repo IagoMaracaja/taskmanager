@@ -17,15 +17,6 @@
             android:text="Create your task"
             android:textSize="23sp"/>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:textColor="@color/light_gray"
-            android:background="@color/transparent"
-            android:textSize="23sp"
-            android:text="+"/>
-
     </LinearLayout>
 
     <LinearLayout

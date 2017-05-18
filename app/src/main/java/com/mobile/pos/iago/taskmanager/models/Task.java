@@ -12,6 +12,7 @@ public class Task {
     private String taskTitle;
     private String taskDescription;
     private Boolean taskStatus;
+    private String taskFinished;
 
     public Task(){}
 
@@ -53,5 +54,13 @@ public class Task {
 
     public void setTaskStatus(Boolean taskStatus) {
         this.taskStatus = taskStatus;
+    }
+
+    public String getTaskFinished() {
+        return taskFinished;
+    }
+
+    public void setTaskFinished(String taskFinished) {
+        this.taskFinished = taskFinished;
     }
 }

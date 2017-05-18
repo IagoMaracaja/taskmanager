@@ -13,14 +13,15 @@ import com.mobile.pos.iago.taskmanager.database.tables.TableTask;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "task.db";
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
 
     private String SQL_TASK = "CREATE TABLE "+ TableTask.TABLE_NAME+" (\n" +
             "                        "+TableTask.ID+" integer primary key autoincrement,\n" +
             "                        "+TableTask.TASK_TITLE+" text,\n" +
             "                        "+TableTask.TASK_DESCRIPTION+" text,\n" +
             "                        "+TableTask.TASK_PRIORITY+" text,\n" +
-            "                        "+TableTask.TASK_STATUS+" text\n" +
+            "                        "+TableTask.TASK_STATUS+" text,\n" +
+            "                        "+TableTask.TASK_DATE_FINISHED+" text\n" +
             "                        )";
 
 

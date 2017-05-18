@@ -13,5 +13,6 @@ public class TableTask {
     public static final String TASK_DESCRIPTION = "task_description";
     public static final String TASK_PRIORITY = "task_priority";
     public static final String TASK_STATUS = "task_status";
+    public static final String TASK_DATE_FINISHED = "task_data_finished";
 
 }

@@ -106,7 +106,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     public void createTask(String taskName){
         Task newTask = new Task();
         newTask.setPriority(this.mPriority);
-        newTask.setName(taskName);
+        newTask.setTaskTitle(taskName);
         MainActivity.mTasks.add(newTask);
         Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
         resetValues();

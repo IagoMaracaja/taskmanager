@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#454548</color>
-    <color name="colorPrimaryDark">#232325</color>
-    <color name="colorAccent">#6d6a6b</color>
+    <color taskTitle="colorPrimary">#454548</color>
+    <color taskTitle="colorPrimaryDark">#232325</color>
+    <color taskTitle="colorAccent">#6d6a6b</color>
 
-    <color name="white">#fbfafb</color>
-    <color name="red">#f11d35</color>
-    <color name="yellow">#eae72d</color>
-    <color name="gray">#74746c</color>
-    <color name="light_gray">#d6d3d6</color>
+    <color taskTitle="white">#fbfafb</color>
+    <color taskTitle="red">#f11d35</color>
+    <color taskTitle="yellow">#eae72d</color>
+    <color taskTitle="gray">#74746c</color>
+    <color taskTitle="light_gray">#d6d3d6</color>
 
-    <color name="transparent">#00000000</color>
+    <color taskTitle="transparent">#00000000</color>
 
 
 </resources>

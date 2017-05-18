@@ -18,7 +18,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private String SQL_TASK = "CREATE TABLE "+ TableTask.TABLE_NAME+" (\n" +
             "                        "+TableTask.ID+"integer primary key autoincrement,\n" +
             "                        "+TableTask.TASK_TITLE+" text,\n" +
-            "                        "+TableTask.TASK_DESCRIPTION+" text\n" +
+            "                        "+TableTask.TASK_DESCRIPTION+" text,\n" +
+            "                        "+TableTask.TASK_PRIORITY+" text\n" +
             "                        )";
 
 

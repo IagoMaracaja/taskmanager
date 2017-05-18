@@ -17,7 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by iago on 17/05/17.
@@ -46,7 +45,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void onBindViewHolder(TaskViewHolder holder, int position) {
 
         Task taskName = this.mTaskList.get(position);
-        holder.mTaskName.setText(taskName.getName());
+        holder.mTaskName.setText(taskName.getTaskTitle());
         holder.mTaskNumber.setText((position+1)+".");
         if (taskName.getPriority() == CreateTaskActivity.Priority.High) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

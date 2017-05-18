@@ -7,11 +7,20 @@ import com.mobile.pos.iago.taskmanager.views.CreateTaskActivity;
  */
 
 public class Task {
-
+    private int id;
     private CreateTaskActivity.Priority priority;
-    private String name;
+    private String taskTitle;
+    private String taskDescription;
 
     public Task(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public CreateTaskActivity.Priority getPriority() {
         return priority;
@@ -21,11 +30,19 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getName() {
-        return name;
+    public String getTaskTitle() {
+        return taskTitle;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
+    }
+
+    public String getTaskDescription() {
+        return taskDescription;
+    }
+
+    public void setTaskDescription(String taskDescription) {
+        this.taskDescription = taskDescription;
     }
 }

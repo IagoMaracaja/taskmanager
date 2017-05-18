@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Task Manager</string>
+    <string taskTitle="app_name">Task Manager</string>
 
-    <string name="button_view_tasks">View Task</string>
-    <string name="task_name">Task Name</string>
-    <string name="new_task">New Task</string>
-    <string name="priority_high">High</string>
-    <string name="priority_medium">Medium</string>
-    <string name="priority_low">Low</string>
-    <string name="priority">Priority</string>
+    <string taskTitle="button_view_tasks">View Task</string>
+    <string taskTitle="task_name">Task Name</string>
+    <string taskTitle="new_task">New Task</string>
+    <string taskTitle="priority_high">High</string>
+    <string taskTitle="priority_medium">Medium</string>
+    <string taskTitle="priority_low">Low</string>
+    <string taskTitle="priority">Priority</string>
 
     <!-- Error messages -->
-    <string name="task_name_error">The name cannot be blank</string>
-    <string name="total_of_task">Total of task:</string>
+    <string taskTitle="task_name_error">The taskTitle cannot be blank</string>
+    <string taskTitle="total_of_task">Total of task:</string>
 
 </resources>

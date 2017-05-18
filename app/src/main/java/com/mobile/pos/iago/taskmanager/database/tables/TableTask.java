@@ -11,5 +11,6 @@ public class TableTask {
     public static final String ID = "_id";
     public static final String TASK_TITLE = "task_title";
     public static final String TASK_DESCRIPTION = "task_description";
+    public static final String TASK_PRIORITY = "task_priority";
 
 }

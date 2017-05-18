@@ -1,4 +1,4 @@
-package com.mobile.pos.iago.taskmanager.views;
+package com.mobile.pos.iago.taskmanager.views.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.pos.iago.taskmanager.R;
+import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
 import com.mobile.pos.iago.taskmanager.models.Task;
 
 import butterknife.BindView;
@@ -38,6 +39,8 @@ public class CreateTaskActivity extends AppCompatActivity {
     protected TextView mErrorMessage;
     @BindView(R.id.et_task_name)
     protected EditText mEtTaskName;
+    @BindView(R.id.et_task_description)
+    protected EditText mEtTaskDescription;
     private Priority mPriority;
 
     @Override
@@ -47,7 +50,6 @@ public class CreateTaskActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
     }
-
 
     @OnClick(R.id.check_high)
     public void onClickHighPriority() {
@@ -64,7 +66,10 @@ public class CreateTaskActivity extends AppCompatActivity {
         checkPriority(Priority.Low);
     }
 
-
+    /**
+     * Check priority action
+     * @param priority
+     */
     public void checkPriority(Priority priority) {
         if (priority == Priority.High) {
             this.mCheckBoxMedium.setChecked(false);
@@ -84,7 +89,8 @@ public class CreateTaskActivity extends AppCompatActivity {
     public void createTaskButton(){
         if(this.checkTaskName()){
             this.mErrorMessage.setVisibility(View.INVISIBLE);
-            this.createTask(this.mEtTaskName.getText().toString());
+            this.createTask(this.mEtTaskName.getText().toString(),
+                    mEtTaskDescription.getText().toString());
         }else{
             this.mErrorMessage.setVisibility(View.VISIBLE);
             this.mErrorMessage.setText(getString(R.string.task_name_error));
@@ -96,6 +102,10 @@ public class CreateTaskActivity extends AppCompatActivity {
         CreateTaskActivity.this.finish();
     }
 
+    /**
+     * Checf if task name has valid entries
+     * @return
+     */
     public boolean checkTaskName(){
         if(this.mEtTaskName.getText().toString().equals("")){
             return false;
@@ -103,17 +113,34 @@ public class CreateTaskActivity extends AppCompatActivity {
         return true;
     }
 
-    public void createTask(String taskName){
+    /**
+     * Create task and save on db
+     * @param taskName
+     * @param taskDescription
+     */
+    public void createTask(String taskName, String taskDescription){
         Task newTask = new Task();
         newTask.setPriority(this.mPriority);
-        newTask.setName(taskName);
-        MainActivity.mTasks.add(newTask);
-        Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
+        newTask.setTaskTitle(taskName);
+        newTask.setTaskDescription(taskDescription);
+        newTask.setTaskStatus(false);
+
+        TaskDBController db = new TaskDBController(this);
+        boolean insertResult = db.addNewTask(newTask);
+
+        if (insertResult){
+            Toast.makeText(this, "Created task successfully", Toast.LENGTH_SHORT).show();
+        }
+
         resetValues();
     }
 
+    /**
+     * Clear form data
+     */
     private void resetValues(){
         this.mEtTaskName.setText(" ");
+        this.mEtTaskDescription.setText(" ");
         this.mCheckBoxHigh.setChecked(false);
         this.mCheckBoxMedium.setChecked(false);
         this.mCheckBoxLow.setChecked(false);

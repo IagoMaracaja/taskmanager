@@ -11,13 +11,12 @@ import android.widget.TextView;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.models.Task;
-import com.mobile.pos.iago.taskmanager.views.CreateTaskActivity;
+import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by iago on 17/05/17.
@@ -45,10 +44,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
 
-        Task taskName = this.mTaskList.get(position);
-        holder.mTaskName.setText(taskName.getName());
+        Task task = this.mTaskList.get(position);
+        holder.mTaskName.setText(task.getTaskTitle());
         holder.mTaskNumber.setText((position+1)+".");
-        if (taskName.getPriority() == CreateTaskActivity.Priority.High) {
+        if (task.getPriority() == CreateTaskActivity.Priority.High) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.red));
                 holder.mTaskNumber.setTextColor(mContext.getColor(R.color.red));
@@ -56,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.red));
                 holder.mTaskNumber.setTextColor(mContext.getResources().getColor(R.color.red));
             }
-        } else if (taskName.getPriority() == CreateTaskActivity.Priority.Medium) {
+        } else if (task.getPriority() == CreateTaskActivity.Priority.Medium) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.yellow));
                 holder.mTaskNumber.setTextColor(mContext.getColor(R.color.yellow));
@@ -72,6 +71,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 holder.mTaskName.setTextColor(mContext.getResources().getColor(R.color.gray));
                 holder.mTaskNumber.setTextColor(mContext.getResources().getColor(R.color.gray));
             }
+        }
+
+        if (task.getTaskStatus()){
+            holder.mTaskStatus.setChecked(true);
+        } else {
+            holder.mTaskStatus.setChecked(false);
         }
 
 

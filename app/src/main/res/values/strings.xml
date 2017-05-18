@@ -10,7 +10,8 @@
     <string name="priority">Priority</string>
 
     <!-- Error messages -->
-    <string name="task_name_error">The name cannot be blank</string>
+    <string name="task_name_error">The taskTitle cannot be blank</string>
     <string name="total_of_task">Total of task:</string>
+    <string name="task_description">Task Description</string>
 
 </resources>

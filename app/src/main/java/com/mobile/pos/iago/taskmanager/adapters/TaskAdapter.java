@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.models.Task;
-import com.mobile.pos.iago.taskmanager.views.CreateTaskActivity;
+import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
 import java.util.List;
 

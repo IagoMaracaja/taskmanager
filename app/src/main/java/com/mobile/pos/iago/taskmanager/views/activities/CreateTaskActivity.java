@@ -1,4 +1,4 @@
-package com.mobile.pos.iago.taskmanager.views;
+package com.mobile.pos.iago.taskmanager.views.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

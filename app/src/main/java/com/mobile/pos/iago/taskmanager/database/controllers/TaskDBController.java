@@ -4,12 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.mobile.pos.iago.taskmanager.database.helper.SQLiteHelper;
 import com.mobile.pos.iago.taskmanager.database.tables.TableTask;
 import com.mobile.pos.iago.taskmanager.models.Task;
-import com.mobile.pos.iago.taskmanager.views.CreateTaskActivity;
+import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
 import java.util.ArrayList;
 import java.util.List;

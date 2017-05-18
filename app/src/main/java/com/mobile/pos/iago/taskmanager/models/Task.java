@@ -1,6 +1,6 @@
 package com.mobile.pos.iago.taskmanager.models;
 
-import com.mobile.pos.iago.taskmanager.views.CreateTaskActivity;
+import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
 /**
  * Created by iago on 17/05/17.

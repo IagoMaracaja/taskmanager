@@ -10,7 +10,9 @@ import com.mobile.pos.iago.taskmanager.database.tables.TableTask;
 import com.mobile.pos.iago.taskmanager.models.Task;
 import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -60,7 +62,7 @@ public class TaskDBController {
     public List<Task> getAllTask(){
         List<Task> tasks = new ArrayList<>();
         Cursor cursor;
-        String[] fields =  {TableTask.ID,TableTask.TASK_TITLE,TableTask.TASK_DESCRIPTION,TableTask.TASK_PRIORITY, TableTask.TASK_STATUS};
+        String[] fields =  {TableTask.ID,TableTask.TASK_TITLE,TableTask.TASK_DESCRIPTION,TableTask.TASK_PRIORITY, TableTask.TASK_STATUS, TableTask.TASK_DATE_FINISHED};
         db = helper.getReadableDatabase();
         cursor = db.query(TableTask.TABLE_NAME, fields, null, null, null, null, null, null);
 
@@ -81,13 +83,42 @@ public class TaskDBController {
                     task.setPriority(CreateTaskActivity.Priority.Low);
                 }
                 String taskStatus = cursor.getString(cursor.getColumnIndex(TableTask.TASK_STATUS));
-                task.setTaskStatus( taskStatus == "1"? true: false);
-
+                task.setTaskStatus( taskStatus.equals("1")? true: false);
+                task.setTaskFinished(cursor.getString(cursor.getColumnIndex(TableTask.TASK_DATE_FINISHED)));
                 tasks.add(task);
                 cursor.moveToNext();
             }
         }
         db.close();
         return tasks;
+    }
+
+    /**
+     * Change the task status
+     * @param id
+     * @param checked
+     */
+    public boolean setTaskStatus(int id, boolean checked){
+        ContentValues values;
+        String where;
+
+        db = helper.getWritableDatabase();
+
+        where = TableTask.ID + "=" + id;
+
+        String date = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date());
+
+        values = new ContentValues();
+        values.put(TableTask.TASK_STATUS, checked ? "1": "0");
+        values.put(TableTask.TASK_DATE_FINISHED, checked ? date : "");
+
+        int result = db.update(TableTask.TABLE_NAME,values,where,null);
+        db.close();
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }

@@ -26,7 +26,15 @@ public class ViewTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_task);
         ButterKnife.bind(this);
+
         inflateFragment();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateFragment();
     }
 
     /**
@@ -39,6 +47,14 @@ public class ViewTaskActivity extends AppCompatActivity {
         ft.add(R.id.ll_fragment_list_view, new TaskListFragment());
         ft.commit();
 
+    }
+
+    public void updateFragment(){
+        FragmentManager fm = getFragmentManager();
+
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.ll_fragment_list_view, new TaskListFragment());
+        ft.commit();
     }
 
     @OnClick(R.id.btn_create_new_task)

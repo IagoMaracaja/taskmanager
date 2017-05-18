@@ -53,6 +53,11 @@ public class TaskListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateValues(getActivity());
+    }
 
     private void configureRecyclerView(){
         mListOfTasks.setHasFixedSize(true);

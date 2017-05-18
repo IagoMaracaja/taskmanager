@@ -144,6 +144,8 @@ public class CreateTaskActivity extends AppCompatActivity {
         this.mCheckBoxHigh.setChecked(false);
         this.mCheckBoxMedium.setChecked(false);
         this.mCheckBoxLow.setChecked(false);
+
+        mEtTaskName.requestFocus();
     }
 
 

@@ -8,15 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobile.pos.iago.taskmanager.R;
+import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
 import com.mobile.pos.iago.taskmanager.models.Task;
+import com.mobile.pos.iago.taskmanager.utils.TaskUtils;
 import com.mobile.pos.iago.taskmanager.views.activities.CreateTaskActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by iago on 17/05/17.
@@ -42,9 +46,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     @Override
-    public void onBindViewHolder(TaskViewHolder holder, int position) {
+    public void onBindViewHolder(final TaskViewHolder holder, int position) {
 
-        Task task = this.mTaskList.get(position);
+        final Task task = this.mTaskList.get(position);
         holder.mTaskName.setText(task.getTaskTitle());
         holder.mTaskNumber.setText((position+1)+".");
         if (task.getPriority() == CreateTaskActivity.Priority.High) {
@@ -79,6 +83,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             holder.mTaskStatus.setChecked(false);
         }
 
+        holder.mTaskName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaskUtils.showTaskDetails(mContext,task);
+            }
+        });
+
+        holder.mTaskStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaskDBController db = new TaskDBController(mContext);
+                boolean result = db.setTaskStatus(task.getId(), holder.mTaskStatus.isChecked());
+                if(result){
+                    mTaskList = db.getAllTask();
+                    notifyDataSetChanged();
+                }
+            }
+        });
 
 
     }
@@ -101,5 +123,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             super(view);
             ButterKnife.bind(this, view);
         }
+
     }
 }

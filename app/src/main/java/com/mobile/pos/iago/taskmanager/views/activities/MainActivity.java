@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-
 import com.mobile.pos.iago.taskmanager.R;
+import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
 import com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment;
 
 import butterknife.BindView;
@@ -28,11 +28,19 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
         inflateFragment();
 
-        //String totalOfTask = getString(R.string.total_of_task);
-        //mTotalOfTasks.setText(totalOfTask + " " + mTasks.size());
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String totalOfTask = getString(R.string.total_of_task);
+        int taskSize = new TaskDBController(this).getAllTask().size();
+        mTotalOfTasks.setText(totalOfTask + " " + taskSize);
+
+        updateFragment();
+    }
 
     /**
      * Inflate Fragment
@@ -46,14 +54,22 @@ public class MainActivity extends Activity {
 
     }
 
+    public void updateFragment(){
+        FragmentManager fm = getFragmentManager();
+
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.ll_fragment_list, new TaskListFragment());
+        ft.commit();
+    }
+
 
     @OnClick(R.id.btn_close)
-    protected  void onClose(){
+    protected void onClose() {
         MainActivity.this.finish();
     }
 
     @OnClick(R.id.btn_view_task)
-    protected  void onClick(){
+    protected void onClick() {
         Intent it = new Intent(MainActivity.this, ViewTaskActivity.class);
         startActivity(it);
     }

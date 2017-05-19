@@ -14,7 +14,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="@string/create_new_task"
+            android:text="@string/to_do_list"
+            android:gravity="center"
             android:background="@drawable/title_border"
             android:textSize="25sp"/>
 
@@ -36,6 +37,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
     </LinearLayout>
+
 
 
 </LinearLayout>

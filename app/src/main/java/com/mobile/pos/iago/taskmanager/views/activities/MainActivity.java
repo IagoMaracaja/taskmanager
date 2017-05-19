@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.mobile.pos.iago.taskmanager.R;
 import com.mobile.pos.iago.taskmanager.database.controllers.TaskDBController;
+import com.mobile.pos.iago.taskmanager.services.ChatHeadService;
 import com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment;
 
 import butterknife.BindView;
@@ -19,6 +20,9 @@ import static com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment.B
 
 public class MainActivity extends Activity {
 
+    public static Activity mActivity;
+    public static boolean isActive;
+
     @BindView(R.id.total_of_task)
     protected TextView mTotalOfTasks;
 
@@ -28,6 +32,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mActivity = this;
+        startService(new Intent(MainActivity.this, ChatHeadService.class));
         inflateFragment();
 
 
@@ -36,12 +42,24 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        isActive = true;
         String totalOfTask = getString(R.string.total_of_task);
         int taskSize = new TaskDBController(this).getAllTask(true).size();
         mTotalOfTasks.setText(totalOfTask + " " + taskSize);
 
         updateFragment();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isActive = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isActive = false;
     }
 
     /**

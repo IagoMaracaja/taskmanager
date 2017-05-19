@@ -1,15 +1,15 @@
-1 - Ajustar fluxo das telas (remover activity dos apps recentes - o Main)
+1 - [OK] Ajustar fluxo das telas (remover activity dos apps recentes - o Main)
 2 - [Não vai ter nome!]Solicitar nome do usuario e savar no shared preferences
 3 - swipe to dismiss ( para remover o item da lista)
 4 - Encontrar algum webservice para compor o app
 5 - Criar versão para tablet
 6 - Internacionalizar o app
 7 - [OK] Tratar para na primeira tela só aparecer as tasks que não foram concluidas
-8 - Ícone da aplicação
-9 - Colocar comportamento de Chat Heads
+8 - [OK] Ícone da aplicação
+9 - [OK] Colocar comportamento de Chat Heads
 
 
 Se der tempo ou para uma versão 2.0
 - Criar agrupamento de task
 
-Nome do App = ToolDo
+- [OK] Nome do App = ToolDo

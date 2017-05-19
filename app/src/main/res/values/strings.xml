@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Task Manager</string>
 
-    <string name="button_view_tasks">View Task</string>
+    <string name="button_view_tasks">VIEW  ALL TASKS</string>
     <string name="task_name">Task Name</string>
     <string name="new_task">New Task</string>
     <string name="priority_high">High</string>
@@ -16,5 +16,6 @@
     <string name="create_new_task">Create new task</string>
     <string name="finished_at">Finished at</string>
     <string name="open">Open</string>
+    <string name="task_not_completed">Task not completed</string>
 
 </resources>

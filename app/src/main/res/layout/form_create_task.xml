@@ -30,18 +30,15 @@
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            >
+            android:layout_alignParentTop="true">
 
             <EditText
                 android:id="@+id/et_task_name"
                 android:layout_width="match_parent"
-                android:hint="@string/task_name"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionGo"
-                android:inputType="text"
-                android:textColorHighlight="@color/gray"
-                />
+                android:hint="@string/task_name"
+                android:inputType="textWebEditText"
+                android:textColorHighlight="@color/gray" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -49,18 +46,15 @@
             android:id="@+id/text_input_layout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            >
+            android:layout_alignParentTop="true">
 
             <EditText
                 android:id="@+id/et_task_description"
                 android:layout_width="match_parent"
-                android:hint="@string/task_description"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionGo"
-                android:inputType="text"
-                android:textColorHighlight="@color/gray"
-                />
+                android:hint="@string/task_description"
+                android:inputType="textWebEditText"
+                android:textColorHighlight="@color/gray" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -70,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:visibility="invisible"
-            android:textColor="@color/red"/>
+            android:textColor="@color/red"
+            android:visibility="invisible" />
 
         <include layout="@layout/priority_layout"></include>
 
@@ -82,22 +76,22 @@
             <Button
                 android:id="@+id/btn_cancel_task"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="50dp"
-                android:text="CANCEL"
                 android:layout_margin="5dp"
-                android:textColor="@color/white"
-                android:background="@color/colorAccent"/>
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:text="CANCEL"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btn_create_task"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_margin="5dp"
                 android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/colorPrimaryDark"
                 android:text="OK"
-                android:textColor="@color/white"
-                android:background="@color/colorPrimaryDark"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

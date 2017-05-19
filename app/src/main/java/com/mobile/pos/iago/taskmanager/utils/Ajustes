@@ -1,0 +1,13 @@
+1 - Ajustar fluxo das telas (remover activity dos apps recentes - o Main)
+2 - Solicitar nome do usuario e savar no shared preferences [Não vai ter nome!]
+3 - swipe to dismiss ( para remover o item da lista)
+4 - Encontrar algum webservice para compor o app
+5 - Criar versão para tablet
+6 - Internacionalizar o app
+7 - Tratar para na primeira tela só aparecer as tasks que não foram concluidas
+8 - Ícone da aplicação
+9 - Colocar comportamento de Chat Heads
+
+
+Se der tempo ou para uma versão 2.0
+- Criar agrupamento de task

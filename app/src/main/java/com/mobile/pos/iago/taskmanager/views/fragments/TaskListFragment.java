@@ -38,6 +38,10 @@ public class TaskListFragment extends Fragment {
     public static List<Task> mTasks;
     private static TaskAdapter mTaskAdapter;
 
+    protected static boolean withTaskNotCompleted;
+
+    public static final String BUNDLE_TASK_NOT_COMPLETED = "onlyNotCompleted";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,12 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            withTaskNotCompleted = bundle.getBoolean(BUNDLE_TASK_NOT_COMPLETED);
+        }
+
         updateValues(getActivity());
     }
 
@@ -65,14 +75,14 @@ public class TaskListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListOfTasks.setLayoutManager(linearLayoutManager);
-        mTasks = new TaskDBController(getActivity()).getAllTask();
+        mTasks = new TaskDBController(getActivity()).getAllTask(withTaskNotCompleted);
         mTaskAdapter = new TaskAdapter(getActivity(), mTasks);
         mListOfTasks.setAdapter(mTaskAdapter);
     }
 
     public static void updateValues(Context context){
 
-        mTasks = new TaskDBController(context).getAllTask();
+        mTasks = new TaskDBController(context).getAllTask(withTaskNotCompleted);
         mTaskAdapter.notifyDataSetChanged();
     }
 

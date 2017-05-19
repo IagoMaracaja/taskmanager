@@ -15,6 +15,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment.BUNDLE_TASK_NOT_COMPLETED;
+
 public class MainActivity extends Activity {
 
     @BindView(R.id.total_of_task)
@@ -36,7 +38,7 @@ public class MainActivity extends Activity {
         super.onResume();
 
         String totalOfTask = getString(R.string.total_of_task);
-        int taskSize = new TaskDBController(this).getAllTask().size();
+        int taskSize = new TaskDBController(this).getAllTask(true).size();
         mTotalOfTasks.setText(totalOfTask + " " + taskSize);
 
         updateFragment();
@@ -46,19 +48,33 @@ public class MainActivity extends Activity {
      * Inflate Fragment
      */
     public void inflateFragment() {
-        FragmentManager fm = getFragmentManager();
 
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.ll_fragment_list, new TaskListFragment());
+
+        TaskListFragment taskListFragment = new TaskListFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BUNDLE_TASK_NOT_COMPLETED, true);
+        taskListFragment.setArguments(bundle);
+
+        ft.add(R.id.ll_fragment_list, taskListFragment);
         ft.commit();
 
     }
 
     public void updateFragment(){
-        FragmentManager fm = getFragmentManager();
 
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.ll_fragment_list, new TaskListFragment());
+
+        TaskListFragment taskListFragment = new TaskListFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BUNDLE_TASK_NOT_COMPLETED, true);
+        taskListFragment.setArguments(bundle);
+
+        ft.replace(R.id.ll_fragment_list, taskListFragment);
         ft.commit();
     }
 

@@ -57,14 +57,19 @@ public class TaskDBController {
 
     /**
      * Get all task in database
-     * @return
+     * @param withOnlyNotCompleted false case return must be all data
+     * @return list of Tasks
      */
-    public List<Task> getAllTask(){
+    public List<Task> getAllTask(boolean withOnlyNotCompleted){
         List<Task> tasks = new ArrayList<>();
         Cursor cursor;
         String[] fields =  {TableTask.ID,TableTask.TASK_TITLE,TableTask.TASK_DESCRIPTION,TableTask.TASK_PRIORITY, TableTask.TASK_STATUS, TableTask.TASK_DATE_FINISHED};
         db = helper.getReadableDatabase();
-        cursor = db.query(TableTask.TABLE_NAME, fields, null, null, null, null, null, null);
+        if(withOnlyNotCompleted){
+            cursor = db.query(TableTask.TABLE_NAME, fields, TableTask.TASK_STATUS+"=?", new String[] { "0" }, null, null, null, null);
+        }else{
+            cursor = db.query(TableTask.TABLE_NAME, fields, null, null, null, null, null, null);
+        }
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {

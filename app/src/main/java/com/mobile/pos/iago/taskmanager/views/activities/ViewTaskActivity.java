@@ -4,8 +4,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mobile.pos.iago.taskmanager.R;
@@ -58,7 +56,7 @@ public class ViewTaskActivity extends AppCompatActivity {
 
     }
 
-    public void updateFragment(){
+    public void updateFragment() {
 
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

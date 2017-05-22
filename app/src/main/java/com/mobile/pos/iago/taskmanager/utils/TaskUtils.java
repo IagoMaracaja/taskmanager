@@ -2,6 +2,7 @@ package com.mobile.pos.iago.taskmanager.utils;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ public class TaskUtils {
     public static void showTaskDetails(Context context, Task task){
         // custom dialog
         final Dialog dialog = new Dialog(context, R.style.Theme_AppCompat_Light_Dialog_Alert);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.task_details);
 
         // set the custom dialog components - text, image and button

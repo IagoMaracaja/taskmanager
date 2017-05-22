@@ -39,7 +39,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.task_adapter_item, null);
+                .inflate(R.layout.task_adapter_item2, null);
 
         TaskViewHolder holder = new TaskViewHolder(view);
         return holder;
@@ -50,7 +50,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         final Task task = this.mTaskList.get(position);
         holder.mTaskName.setText(task.getTaskTitle());
-        holder.mTaskNumber.setText((position+1)+".");
+        holder.mTaskNumber.setText(Integer.toString(position+1));
         if (task.getPriority() == CreateTaskActivity.Priority.High) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 holder.mTaskName.setTextColor(mContext.getColor(R.color.red));

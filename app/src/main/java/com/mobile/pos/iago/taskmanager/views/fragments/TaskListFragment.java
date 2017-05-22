@@ -72,8 +72,8 @@ public class TaskListFragment extends Fragment {
     private void configureRecyclerView(){
         mListOfTasks.setHasFixedSize(true);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        //linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mListOfTasks.setLayoutManager(linearLayoutManager);
         mTasks = new TaskDBController(getActivity()).getAllTask(withTaskNotCompleted);
         mTaskAdapter = new TaskAdapter(getActivity(), mTasks);

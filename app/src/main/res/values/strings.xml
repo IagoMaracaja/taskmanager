@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Task Manager</string>
+    <string name="app_name">TooL Do</string>
 
-    <string name="button_view_tasks">View Task</string>
+    <string name="button_view_tasks">VIEW  ALL TASKS</string>
     <string name="task_name">Task Name</string>
     <string name="new_task">New Task</string>
     <string name="priority_high">High</string>
@@ -14,7 +14,9 @@
     <string name="total_of_task">Total of task:</string>
     <string name="task_description">Task Description</string>
     <string name="create_new_task">Create new task</string>
+    <string name="to_do_list">TO DO LIST</string>
     <string name="finished_at">Finished at</string>
     <string name="open">Open</string>
+    <string name="task_not_completed">Task not completed</string>
 
 </resources>

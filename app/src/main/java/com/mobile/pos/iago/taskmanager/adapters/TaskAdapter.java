@@ -96,7 +96,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 TaskDBController db = new TaskDBController(mContext);
                 boolean result = db.setTaskStatus(task.getId(), holder.mTaskStatus.isChecked());
                 if(result){
-                    mTaskList = db.getAllTask();
+                    boolean withOnlyCompletedTask = holder.mTaskStatus.isChecked();
+                    mTaskList = db.getAllTask(withOnlyCompletedTask);
                     notifyDataSetChanged();
                 }
             }

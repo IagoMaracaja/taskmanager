@@ -14,6 +14,8 @@ import com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.mobile.pos.iago.taskmanager.views.fragments.TaskListFragment.BUNDLE_TASK_NOT_COMPLETED;
+
 /**
  * Created by iago on 18/05/17.
  */
@@ -41,19 +43,33 @@ public class ViewTaskActivity extends AppCompatActivity {
      * Inflate Fragment
      */
     public void inflateFragment() {
-        FragmentManager fm = getFragmentManager();
 
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.ll_fragment_list_view, new TaskListFragment());
+
+        TaskListFragment taskListFragment = new TaskListFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BUNDLE_TASK_NOT_COMPLETED, false);
+        taskListFragment.setArguments(bundle);
+
+        ft.add(R.id.ll_fragment_list_view, taskListFragment);
         ft.commit();
 
     }
 
     public void updateFragment(){
-        FragmentManager fm = getFragmentManager();
 
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.ll_fragment_list_view, new TaskListFragment());
+
+        TaskListFragment taskListFragment = new TaskListFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BUNDLE_TASK_NOT_COMPLETED, false);
+        taskListFragment.setArguments(bundle);
+
+        ft.replace(R.id.ll_fragment_list_view, taskListFragment);
         ft.commit();
     }
 

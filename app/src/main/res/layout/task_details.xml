@@ -23,6 +23,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/task_status_detail_shape_description"
         android:padding="5dp">
 
         <TextView
@@ -38,6 +39,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@drawable/task_status_detail_shape">
 
         <include layout="@layout/task_detail_status"/>
